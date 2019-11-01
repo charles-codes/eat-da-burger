@@ -1,38 +1,74 @@
-<h1>Burgers!</h1>
+<div class="container">
+  <section id="topSection">
+    <h1>Eat da Burgers</h1>
+  </section>
 
-<h2>Burgers that have not been devoured!</h2>
 
-<ul>
-  {{#each burgers}}
-    {{#unless devoured}}
-      {{> burgers/burger-block devoured=true}}
-    {{/unless}}
-  {{/each}}
-</ul>
+  <div class="container">
+    <section class="row" id="mainSection">
+      <div class="col-6 nosh">
 
-<h2>Burgers that have been devoured!</h2>
+        <div class="card text-center">
+          <div class="card">
+            <h2 class="card-header">Eat da Burgers</h2>
+            <ul class="list-group list-group-flush">{{#each burgers}}
+              {{#unless devoured}}
+              <li class="list-group-item">
+                <h5 class="card-title">
+                  {{burger_name}}
+                  <button data-id="{{this.id}}" data-devoured="{{this.devoured}}"
+                    class="eatButton btn btn-warning btn-sm">Eat <i class="fas fa-teeth-open"></i></button>
+                </h5>
 
-<ul>
-  {{#each burgers}}
-    {{#if devoured}}
-      {{> burgers/burger-block devoured=false}}
-    {{/if}}
-  {{/each}}
-</ul>
+              </li>
+              {{/unless}}
+              {{/each}}</ul>
+          </div>
+        </div>
+      </div>
 
-<h2>Add a Burger</h2>
-<form class="create-form">
+      <div class="col-6 noshed">
 
-  <div class="form-group">
-    <label for="ca">Burger Name:</label>
-    <input type="text" id="ca" name="name">
+        <div class="card text-center">
+          <div class="card">
+            <h2 class="card-header">Eaten Burgers</h2>
+            <ul class="list-group list-group-flush">{{#each burgers}}
+              {{#if devoured}}
+              <li class="list-group-item">
+                <h5 class="card-title">
+                  {{burger_name}}
+
+                  <button data-id="{{this.id}}" class="makeButton btn btn-success btn-sm">Cook
+                    <i class="fas fa-hamburger"></i></button>
+                </h5>
+
+              </li>
+              {{/if}}
+              {{/each}}</ul>
+          </div>
+        </div>
+
+    </section>
   </div>
 
-  <div class="form-group">
-    <label for="devoured">Devoured?</label><br>
-    <input type="radio" name="devoured" value="1" checked> devoured!<br>
-    <input type="radio" name="devoured" value="0"> not devoured
-  </div>
+  <div class="container">
+    <section class="row" id="addSection">
+      <div class="col-12">
+        <div class="card text-center">
+          <h2 class="card-header">Create a New Burger</h2>
 
-  <button type="submit">Add Burger</button>
-</form>
+          <div class="card-body">
+            <form class="create-form">
+              <div class="form-group">
+                <label for="burg">Burger Name:</label>
+                <input type="text" id="burg" name="name" required>
+                <button type="submit" class="btn btn-primary">Create <i class="fas fa-hamburger"></i></button>
+              </div>
+            </form>
+          </div>
+
+        </div>
+      </div>
+    </section>
+  </div>
+</div>
