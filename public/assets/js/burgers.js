@@ -34,11 +34,6 @@ $(function() {
       }
     );
   });
-
-  
-  
-  
-  
   
   $(".create-form").on("submit", function(event) {
     event.preventDefault();
@@ -53,19 +48,6 @@ $(function() {
     }).then(
       function() {
         console.log("created new burger");
-        location.reload();
-      }
-    );
-  });
-
-  $(".delete-cat").on("click", function(event) {
-    var id = $(this).data("id");
-
-    $.ajax("/api/cats/" + id, {
-      type: "DELETE"
-    }).then(
-      function() {
-        console.log("deleted cat", id);
         location.reload();
       }
     );
